@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [],
+      isLoaded: false,
+    };
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
+  componentDidMount() {
+    fetch("https://api.quotable.io/random")
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({
+          isLoaded: true,
+          items: json,
+        });
+      });
+    console.log(this.state);
+  }
+  render() {
+    let { isLoaded, items } = this.state;
+
+    if (!isLoaded) {
+      return <div></div>;
+    } else {
+      return (
+        <div className="image">
+          <div className="overlay">
+            <div className="quotebox">
+              <p>{items.content}</p>
+              <p>{items.author}</p>
+              <button onClick={this.componentDidMount}>New Quote</button>
+              <a
+                className="twitter-share-button"
+                href={`https://twitter.com/intent/tweet?text=${items.content} -${items.author}`}
+                target="_blank"
+                rel=" noopener noreferrer"
+                data-size="large"
+              >
+                Tweet
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
 }
 
 export default App;
