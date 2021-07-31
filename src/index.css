@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -21,10 +22,51 @@ body {
 }
 
 .quotebox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -375px;
+  width: 750px;
+  background-color: rgb(0, 32, 41);
+  box-shadow: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+
+.quotetext {
+  font-family: "Baloo Chettan 2", cursive;
+  font-size: 25px;
+  text-align: center;
+  color: rgb(233, 235, 234);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.author {
+  text-align: end;
+  font-family: "Baloo Chettan 2", cursive;
+  color: rgb(233, 235, 234);
+  margin-right: 15px;
+  font-size: 25px;
+}
+.container {
   display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 450px;
-  height: 250px;
-  background-color: rgba(180, 91, 31, 0.322);
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.twitter {
+  text-decoration: none;
+  color: rgb(233, 235, 234);
+  margin-left: 25px;
+  background: #1da1f2;
+  padding: 9px 18px;
+  border-radius: 50px;
+  transition: all 400ms ease-in-out;
+}
+
+.button {
+  font-family: "Baloo Chettan 2", cursive;
+  font-size: 20px;
+  margin-left: 200px;
+  width: 150px;
 }
